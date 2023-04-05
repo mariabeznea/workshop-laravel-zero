@@ -2,4 +2,6 @@
 /.idea
 /.vscode
 /.vagrant
+app/.DS_Store
 .phpunit.result.cache
+.env
