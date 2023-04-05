@@ -7,8 +7,11 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use LaravelZero\Framework\Commands\Command;
 use PhpSchool\CliMenu\CliMenu;
+use PhpSchool\CliMenu\Style\SelectableStyle;
+use function Termwind\render;
+use function Termwind\terminal;
 
-class DemoApiCommand extends Command
+class DemoApiCommand extends AbstractCommand
 {
     /**
      * The signature of the command.
@@ -27,14 +30,35 @@ class DemoApiCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @return bool
      */
-    public function handle()
+    public function init(): bool
     {
+	    // Clear out the terminal messages
+//	    terminal()->clear();
+
 	    $option = $this->menu( 'Retrieve data from APIs')
 		    ->addOption('breaking_bad', 'Get some quotes from Breaking Bad')
 		    ->addOption('chuck_norris', 'Retrieve a random Chuck Norris joke')
 		    ->addLineBreak('=')
+		    ->setBackgroundColour('237')
+		    ->setForegroundColour('156')
+		    ->setBorder(0, 0, 0, 2, '165')
+		    ->setPaddingTopBottom(4)
+		    ->setPaddingLeftRight(8)
+		    ->addLineBreak('-')
+		    ->setMarginAuto()
+//		    ->setWidth(70)
+//		    ->setBackgroundColour('yellow')
+//		    ->setForegroundColour('black')
+//		    ->setPadding(4)
+//		    ->setMargin(4)
+//		    ->setBorder(1, 2, 'red')
+//		    ->setTitleSeparator('- ')
+//		    ->modifySelectableStyle(function (SelectableStyle $style) {
+//			    $style->setUnselectedMarker(' ')
+//				    ->setSelectedMarker('>');
+//		    })
 		    ->open();
 
 		if (!$option) {

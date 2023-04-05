@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea9940f70392d3412b579361a335535b",
+    "content-hash": "2b485eb53dc9c668d99f5a5dfdf43d98",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1840,7 +1840,7 @@
         },
         {
             "name": "illuminate/view",
-            "version": "v10.6.0",
+            "version": "v10.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
