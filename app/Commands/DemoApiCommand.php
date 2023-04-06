@@ -38,8 +38,9 @@ class DemoApiCommand extends AbstractCommand
 //	    terminal()->clear();
 
 	    $option = $this->menu( 'Retrieve data from APIs')
-		    ->addOption('breaking_bad', 'Get some quotes from Breaking Bad')
-		    ->addOption('chuck_norris', 'Retrieve a random Chuck Norris joke')
+		    ->addOption('breakingBad', 'Get some quotes from Breaking Bad')
+		    ->addOption('chuckNorris', 'Retrieve a random Chuck Norris joke')
+		    ->addOption('brokenApi', 'Test broken API')
 		    ->addLineBreak('=')
 		    ->setBackgroundColour('237')
 		    ->setForegroundColour('156')
@@ -68,21 +69,22 @@ class DemoApiCommand extends AbstractCommand
 
 	    $this->info("You have chosen to import data from #$option");
 
-	    $this->notify("API notification", "Data import started", "icon.png");
-
 		switch ($option) {
-			case 'breaking_bad':
+			case 'breakingBad':
 				$response = $this->fetch(env('BREAKING_BAD_URL'));
 				break;
-			case 'chuck_norris':
+			case 'chuckNorris':
 				$response = $this->fetch(env('CHUCK_NORRIS_URL'));
+				break;
+			case 'brokenApi':
+				$response = $this->fetch(env('BROKEN_API'));
 				break;
 			default:
 				break;
 		}
 
 		if ($response->successful()) {
-			Storage::append('importedData.txt', $response->body());
+			Storage::append($option . 'ImportedData.txt', $response->body());
 
 			$this->notify("API notification", "Finished importing data into the txt file", "icon.png");
 		}
