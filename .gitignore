@@ -5,3 +5,4 @@
 app/.DS_Store
 .phpunit.result.cache
 .env
+/database/database.sqlite
