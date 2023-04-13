@@ -39,9 +39,6 @@ class DemoDbCommand extends Command {
 		$fileContent = collect( explode( PHP_EOL, trim( Storage::get( $inputFile ) ) ) );
 		$this->persistContent( pathinfo( $inputFile, PATHINFO_FILENAME ), $fileContent );
 
-		$this->warn( 'Total rows persisted: ' . $fileContent->count() );
-		$this->table( [ 'Quote', 'Author' ], Quote::all() );
-
 		render(view('table-content', [
 			'fileContent' => $fileContent,
 			'quotes' =>  Quote::all(),

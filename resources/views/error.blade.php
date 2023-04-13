@@ -3,5 +3,5 @@
 ])
 
 <div class="flex space-x-1 text-center">
-    <p class="bg-red-600 text-white p-10">{{ $message }}</p>
+    <span class="w-full bg-red-600 text-white p-10 text-center">{{ $message }}</span>
 </div>
