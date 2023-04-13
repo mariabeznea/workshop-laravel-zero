@@ -7,6 +7,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use LaravelZero\Framework\Commands\Command;
+use function Termwind\render;
 
 class DemoDbCommand extends Command {
 	/**
@@ -40,6 +41,11 @@ class DemoDbCommand extends Command {
 
 		$this->warn( 'Total rows persisted: ' . $fileContent->count() );
 		$this->table( [ 'Quote', 'Author' ], Quote::all() );
+
+		render(view('table-content', [
+			'fileContent' => $fileContent,
+			'quotes' =>  Quote::all(),
+		]));
 	}
 
 	/**
